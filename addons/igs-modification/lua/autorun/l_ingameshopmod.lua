@@ -2,7 +2,7 @@ file.CreateDir("igs")
 
 -- Вы можете сделать форк основного репозитория, сделать там изменения и указать его имя здесь
 -- Таким образом IGS будет грузиться у всех с вашего репозитория
-IGS_REPO = "GM-DONATE/IGS" -- "AMD-NICK/IGS-1"
+IGS_REPO = "Milky182828/IGS" -- "AMD-NICK/IGS-1"
 if not IGS_REPO or file.Exists("autorun/l_ingameshop.lua", "LUA") then return end -- force lua
 
 
