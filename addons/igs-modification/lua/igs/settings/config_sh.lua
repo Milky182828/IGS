@@ -9,15 +9,18 @@
 --[[-------------------------------------------------------------------------
 	Настройки валюты
 ---------------------------------------------------------------------------]]
-IGS.C.CURRENCY_SIGN = "Alc"
+-- Если вы не хотите использовать донат валюту, оставив только рубли,
+-- то в настройках проекта на сайте укажите стоимость донат валюты 1 руб
+IGS.C.CURRENCY_NAME = "Рубли" -- Фановое название. Можете изменить
+IGS.C.CURRENCY_SIGN = "RUB"
 
 -- Множественные названия валюты.
 -- Пример 1: Доллар, Доллара, Долларов
 -- Пример 2: Поинт,  Поинта,  Поинтов
 IGS.C.CurrencyPlurals = {
-	"алкобакс",  -- 1 алкобакс
-	"алкобакса", -- 3 алкобакса
-	"алкобаксов" -- 5 алкобаксов
+	"рубль",  -- 1 алкобакс
+	"рубля", -- 3 алкобакса
+	"рублей" -- 5 алкобаксов
 }
 
 
@@ -25,14 +28,12 @@ IGS.C.CurrencyPlurals = {
 	Настройки активации интерфейса
 ---------------------------------------------------------------------------]]
 -- На какую кнопку будет открываться донат менюшка
--- https://wiki.facepunch.com/gmod/Enums/KEY
-IGS.C.MENUBUTTON = KEY_F1
+-- http://wiki.garrysmod.com/page/Enums/KEY
+IGS.C.MENUBUTTON = 9000
 
 
 -- /команда для открытия донат менюшки
 IGS.C.COMMANDS = {
-	["donate"] = true,
-	["донат"]  = true,
 }
 
 
@@ -54,12 +55,30 @@ if SERVER then return end -- не смотрите так на меня :)
 
 -- Показывать ли уведомление о новых предметах в донат меню
 -- Выглядит вот так https://img.qweqwe.ovh/1526574184864.png
-IGS.C.NotifyAboutNewItems = true
+IGS.C.NotifyAboutNewItems = false
 
 
 -- Эта иконка будет отображена для предмета, если для него не будет установлена кастомная через :SetIcon()
 -- Отображается вот тут: https://img.qweqwe.ovh/1494088609445.png
-IGS.C.DefaultIcon = "https://i.imgur.com/mLoHaCE.jpg"
+IGS.C.DefaultIcon = "http://i.imgur.com/hoWvs8L.jpg"
+
+
+-- Отобразится тут: https://img.qweqwe.ovh/1492621941731.png
+-- В конце каждой "}" и строки должна быть запятая. Будьте внимательны!!
+IGS.C.Help = {
+	{
+		TITLE = "Как пополнить свой донат-счет?",
+		TEXT  = "Инструкция по пополнению открывается по нажатию на '+' в верхнем левом углу"
+	},
+	{
+		TITLE = "Как открыть меню админки?",
+		TEXT  = "Просто введите !menu в чат"
+	},
+	{
+		TITLE = "Могу ли я купить что-то особое, чего нет в списке?",
+		TEXT  = "Возможно. Уточняйте у администрации"
+	},
+}
 
 
 
@@ -76,3 +95,28 @@ IGS.C.DisabledFrames = {
 -- Инфо: https://vk.cc/6xaFOe
 IGS.C.DATE_FORMAT = "%d.%m.%y %H:%M:%S"
 IGS.C.DATE_FORMAT_SHORT = "%d.%m.%y"
+
+hook.Add("IGS.Initialized", "IGS.ColorsLoad", function()
+IGS.S.COLORS.FRAME_HEADER        = Color(40,40,40,240) 
+IGS.S.COLORS.ACTIVITY_BG         = Color(50,50,50,240) 
+IGS.S.COLORS.TAB_BAR             = Color(45,45,45,240) 
+
+IGS.S.COLORS.PASSIVE_SELECTIONS  = Color(40,40,40)     
+IGS.S.COLORS.INNER_SELECTIONS    = Color(35,35,35)     
+
+IGS.S.COLORS.SOFT_LINE           = Color(55,55,55)     
+IGS.S.COLORS.HARD_LINE           = Color(55,55,55)     
+
+IGS.S.COLORS.HIGHLIGHTING        = Color(130,130,130)  
+IGS.S.COLORS.HIGHLIGHT_INACTIVE  = Color(85,85,85)     
+
+IGS.S.COLORS.TEXT_HARD           = Color(255,255,255)  
+IGS.S.COLORS.TEXT_SOFT           = Color(115,115,115)  
+IGS.S.COLORS.TEXT_ON_HIGHLIGHT   = Color(255,255,255)  
+
+IGS.S.COLORS.LOG_SUCCESS         = Color(76,217,100)   
+IGS.S.COLORS.LOG_ERROR           = Color(220,30,70)    
+IGS.S.COLORS.LOG_NORMAL          = Color(255,255,255)  
+
+IGS.S.COLORS.ICON                = Color(255,255,255)  
+end)
